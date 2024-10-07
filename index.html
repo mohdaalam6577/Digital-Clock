@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif
+    }
+
+    h1 {
+        font-size: 30px;
+        color: #a447f0;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        background-color: rgb(50, 3, 94);
+    }
+
+    .display {
+        padding: 20px;
+        font-size: 34px;
+        font-weight: 600;
+        color: #fff;
+        margin-top: 50px;
+        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    }
+
+    footer {
+        color: #a447f0;
+        font-size: 17px;
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Digital Clock</h1>
+        <div class="display">
+        </div>
+    </div>
+
+    <script>
+
+        setInterval(function() {
+            const clock = document.querySelector(".display");
+            let time = new Date();
+            let day = 'AM';
+            let hr = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+
+            if ( hr > 12 ) {
+                day = 'PM';
+                hr = hr - 12;
+            }
+
+            if ( hr == 0 ) {
+                hr = 12;
+            }
+
+            if ( sec < 10 ) {
+                sec = '0' + sec;
+            }
+
+            if ( min < 10 ) {
+                min = '0' + min;
+            }
+
+            if ( hr < 10 ) {
+                hr = '0' + hr;
+            }
+
+            clock.textContent = hr + ' : ' + min + ' : ' + sec + ' : ' + day;
+        })
+
+    </script>
+
+    <footer>
+        Made with ❤ Mohammad Aalam
+    </footer>
+</body>
+</html>
